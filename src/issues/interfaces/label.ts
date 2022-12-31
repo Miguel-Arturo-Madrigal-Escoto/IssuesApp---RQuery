@@ -7,10 +7,5 @@ export interface Label {
     name:        string;
     color:       string;
     default:     boolean;
-    description: Description | null;
-}
-
-export enum Description {
-    Empty = "",
-    PullRequestsThatUpdateADependencyFile = "Pull requests that update a dependency file",
+    description?: string;
 }
