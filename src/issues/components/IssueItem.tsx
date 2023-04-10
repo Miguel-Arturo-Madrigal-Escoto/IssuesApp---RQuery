@@ -39,14 +39,15 @@ export const IssueItem: FC<Props> = ({ issue }) => {
             }
         );
 
-        queryClient.setQueryData(
-            ['issue', issue.number, 'comments'],
-            issue.comments || [],
-            {
-                // vigencia que la data se considera como fresh (por lo que no se hace fetch)
-                updatedAt: new Date().getTime() + 10000
-            }
-        )
+        // queryClient.setQueryData(
+        //     ['issue', issue.number, 'comments'],
+        //     [],
+        //     {
+        //         // vigencia que la data se considera como fresh (por lo que no se hace fetch)
+        //         updatedAt: new Date().getTime() + 10000
+        //     }
+        // )
+
     }
 
 
@@ -55,8 +56,8 @@ export const IssueItem: FC<Props> = ({ issue }) => {
         <div 
             className="card mb-2 issue"
             onClick={ () => navigate(`/issues/issue/${ issue.number }`) }
-            // onMouseEnter={ prefetchData }
-            onMouseEnter={ presetData }
+            onMouseEnter={ prefetchData }
+            // onMouseEnter={ presetData }
         >
             <div className="card-body d-flex align-items-center">
                 {

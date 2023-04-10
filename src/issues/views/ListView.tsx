@@ -13,7 +13,7 @@ export const ListView = () => {
   const { state: labels } = useContext(SelectedLabels);
   const [state, setState] = useState<State>();
   
-  const { issuesQuery } = useIssues({ state, labels });
+  const { issuesQuery, page, nextPage, prevPage } = useIssues({ state, labels });
   
 
   return (
@@ -28,6 +28,13 @@ export const ListView = () => {
                   onStateChanged={ setState }
                 />
             }
+
+            <div className="d-flex mt-2 justify-content-between align-items-center">
+              <button type="button" className="btn btn-outline-primary" onClick={ prevPage } disabled={ issuesQuery.isFetching }>Prev</button>
+              <span>{ issuesQuery.isFetching? <LoadingIcon /> : page }</span>
+              <button type="button" className="btn btn-outline-primary" onClick={ nextPage } disabled={ issuesQuery.isFetching }>Next</button>
+            </div>
+            
           </div>
           
           <div className="col-4">
